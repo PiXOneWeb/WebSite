@@ -6,7 +6,6 @@
   <title>PiXOne - ساخت برنامه رایگان , سریع</title>
   <link rel="icon" href="WhatsApp Image 2025-07-19 at 2.58.58 PM.jpeg" type="image/png" />
 
-
   <!-- متا تگ تایید گوگل -->
   <meta name="google-site-verification" content="yg2ocdu5cJfoF0oywVJ55cwhccwJ6vIKeF6euzq2mWQ" />
 
@@ -88,6 +87,62 @@
       color: #555;
     }
 
+    /* بخش آمار دانلود */
+    /* بخش آمار دانلود */
+.stats {
+  background: #26cef0; /* رنگ نارنجی ملایم */
+  color: white;
+  padding: 50px 20px;
+  text-align: center;
+  font-family: 'Vazir', sans-serif;
+}
+.stat-card {
+  background: rgba(255,255,255,0.2);
+  border-radius: 16px;
+  padding: 30px 40px;
+  width: 200px;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+.stat-card h3 {
+  color: #fff;
+  font-size: 3rem;
+  margin: 0 0 10px 0;
+}
+.stat-card p {
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+    .stats h2 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+    }
+    .stats-container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .stat-card {
+      background: rgba(255,255,255,0.15);
+      border-radius: 16px;
+      padding: 30px 40px;
+      width: 200px;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    .stat-card:hover {
+      transform: scale(1.1);
+    }
+    .stat-card h3 {
+      font-size: 3rem;
+      margin: 0 0 10px 0;
+    }
+    .stat-card p {
+      font-size: 1.2rem;
+    }
+
     .footer {
       background-color: #111;
       color: white;
@@ -105,6 +160,18 @@
       .feature-cards {
         flex-direction: column;
         align-items: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .stats-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .stat-card {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
       }
     }
   </style>
@@ -135,10 +202,49 @@
     </div>
   </section>
 
+  <!-- بخش آمار دانلود -->
+  <section class="stats">
+    <h2>آمار دانلود برنامه</h2>
+    <div class="stats-container">
+      <div class="stat-card">
+        <h3 id="downloadCount">0</h3>
+        <p>تعداد دانلود</p>
+      </div>
+      <div class="stat-card">
+        <h3>5000+</h3>
+        <p>کاربران فعال</p>
+      </div>
+      <div class="stat-card">
+        <h3>4.8/5</h3>
+        <p>امتیاز کاربران</p>
+      </div>
+    </div>
+  </section>
+
   <!-- فوتر -->
   <div class="footer">
     طراحی شده توسط تیم پیکس وان ©
   </div>
+
+  <script>
+    function animateCount(id, target, duration) {
+      const element = document.getElementById(id);
+      let start = 0;
+      const increment = target / (duration / 30);
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= target) {
+          start = target;
+          clearInterval(timer);
+        }
+        element.textContent = Math.floor(start).toLocaleString();
+      }, 30);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      animateCount('downloadCount', 123456, 2000); // تغییر عدد به تعداد دانلود واقعی شما
+    });
+  </script>
 
 </body>
 </html>
