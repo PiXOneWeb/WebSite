@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PiXOne - ساخت برنامه رایگان , سریع</title>
   <link rel="icon" href="WhatsApp Image 2025-07-19 at 2.58.58 PM.jpeg" type="image/png" />
-
-  <!-- متا تگ تایید گوگل -->
   <meta name="google-site-verification" content="yg2ocdu5cJfoF0oywVJ55cwhccwJ6vIKeF6euzq2mWQ" />
 
   <style>
@@ -29,7 +27,7 @@
     }
 
     .download-btn {
-      background-color: #007BFF;
+      background-color: #28a745; /* سبز */
       color: white;
       padding: 16px 30px;
       font-size: 1.2rem;
@@ -41,7 +39,7 @@
     }
 
     .download-btn:hover {
-      background-color: #0056b3;
+      background-color: #218838;
     }
 
     .features {
@@ -77,7 +75,7 @@
     }
 
     .card h3 {
-      color: #007BFF;
+      color: #28a745;
       font-size: 1.4rem;
       margin-bottom: 10px;
     }
@@ -87,7 +85,6 @@
       color: #555;
     }
 
-    /* بخش آمار دانلود */
     .stats {
       background: #222;
       color: white;
@@ -198,7 +195,7 @@
     </div>
     <div class="card">
       <h3>زیبا</h3>
-      <p>ساخت برنامه زیبا</p>
+      <p>ساخت برنامه زیبا و سریع</p>
     </div>
     <div class="card">
       <h3>یادآوری پیشرفته</h3>
@@ -247,19 +244,15 @@
     }, 30);
   }
 
-  // انیمیشن آمار دانلود
+  // شروع شمارش دانلود
   window.addEventListener('DOMContentLoaded', () => {
-    animateCount('downloadCount', 123456, 2000);
+    animateCount('downloadCount', 123456, 2000); // این عددو تغییر بده
   });
 
-  // تشخیص قطع اینترنت
+  // تشخیص وضعیت اینترنت
   const banner = document.getElementById("offline-banner");
   function updateOnlineStatus() {
-    if (navigator.onLine) {
-      banner.style.display = "none";
-    } else {
-      banner.style.display = "block";
-    }
+    banner.style.display = navigator.onLine ? "none" : "block";
   }
   window.addEventListener('online', updateOnlineStatus);
   window.addEventListener('offline', updateOnlineStatus);
