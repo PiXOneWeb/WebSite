@@ -88,58 +88,46 @@
     }
 
     /* بخش آمار دانلود */
-    /* بخش آمار دانلود */
-.stats {
-  background: #26cef0; /* رنگ نارنجی ملایم */
-  color: white;
-  padding: 50px 20px;
-  text-align: center;
-  font-family: 'Vazir', sans-serif;
-}
-.stat-card {
-  background: rgba(255,255,255,0.2);
-  border-radius: 16px;
-  padding: 30px 40px;
-  width: 200px;
-  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease;
-}
-.stat-card h3 {
-  color: #fff;
-  font-size: 3rem;
-  margin: 0 0 10px 0;
-}
-.stat-card p {
-  color: #fff;
-  font-size: 1.2rem;
-}
+    .stats {
+      background: #222;
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+    }
 
     .stats h2 {
       font-size: 2.5rem;
       margin-bottom: 40px;
     }
+
     .stats-container {
       display: flex;
       justify-content: center;
       gap: 40px;
       flex-wrap: wrap;
     }
+
     .stat-card {
-      background: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.1);
       border-radius: 16px;
       padding: 30px 40px;
       width: 200px;
       box-shadow: 0 8px 15px rgba(0,0,0,0.2);
       transition: transform 0.3s ease;
     }
+
     .stat-card:hover {
       transform: scale(1.1);
     }
+
     .stat-card h3 {
+      color: #fff;
       font-size: 3rem;
       margin: 0 0 10px 0;
     }
+
     .stat-card p {
+      color: #ccc;
       font-size: 1.2rem;
     }
 
@@ -150,6 +138,20 @@
       padding: 20px;
       font-size: 1rem;
       margin-top: 40px;
+    }
+
+    #offline-banner {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: #e53935;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 1rem;
+      z-index: 10000;
     }
 
     @media (max-width: 768px) {
@@ -178,73 +180,91 @@
 </head>
 <body>
 
-  <!-- بخش اول با تصویر -->
-  <section class="hero">
-    <button class="download-btn" onclick="window.location.href='https://old.appsgeyser.com/building/?type=apk&widget_name=PiXOne_18955071'">📥 دانلود برنامه</button>
-  </section>
+<!-- بنر قطع اینترنت -->
+<div id="offline-banner">🚫 اتصال به اینترنت برقرار نیست</div>
 
-  <!-- بخش قابلیت‌ها -->
-  <section class="features">
-    <h2>قابلیت‌های برنامه</h2>
-    <div class="feature-cards">
-      <div class="card">
-        <h3>هوشمند</h3>
-        <p>دارای یک هوش مصنوعی فوق العاده باهوش</p>
-      </div>
-      <div class="card">
-        <h3>زیبا</h3>
-        <p>ساخت برنامه زیبا</p>
-      </div>
-      <div class="card">
-        <h3>یادآوری پیشرفته</h3>
-        <p>با اعلان‌ها و هشدارهای دقیق، هیچ کاری رو فراموش نکن.</p>
-      </div>
+<!-- بخش اول با تصویر -->
+<section class="hero">
+  <button class="download-btn" onclick="window.location.href='https://old.appsgeyser.com/building/?type=apk&widget_name=PiXOne_18955071'">📥 دانلود برنامه</button>
+</section>
+
+<!-- بخش قابلیت‌ها -->
+<section class="features">
+  <h2>قابلیت‌های برنامه</h2>
+  <div class="feature-cards">
+    <div class="card">
+      <h3>هوشمند</h3>
+      <p>دارای یک هوش مصنوعی فوق العاده باهوش</p>
     </div>
-  </section>
-
-  <!-- بخش آمار دانلود -->
-  <section class="stats">
-    <h2>آمار دانلود برنامه</h2>
-    <div class="stats-container">
-      <div class="stat-card">
-        <h3 id="downloadCount">4</h3>
-        <p>تعداد دانلود</p>
-      </div>
-      <div class="stat-card">
-        <h3>2</h3>
-        <p>کاربران فعال</p>
-      </div>
-      <div class="stat-card">
-        <h3>4.8/5</h3>
-        <p>امتیاز کاربران</p>
-      </div>
+    <div class="card">
+      <h3>زیبا</h3>
+      <p>ساخت برنامه زیبا</p>
     </div>
-  </section>
-
-  <!-- فوتر -->
-  <div class="footer">
-    طراحی شده توسط تیم پیکس وان ©
+    <div class="card">
+      <h3>یادآوری پیشرفته</h3>
+      <p>با اعلان‌ها و هشدارهای دقیق، هیچ کاری رو فراموش نکن.</p>
+    </div>
   </div>
+</section>
 
-  <script>
-    function animateCount(id, target, duration) {
-      const element = document.getElementById(id);
-      let start = 0;
-      const increment = target / (duration / 30);
-      const timer = setInterval(() => {
-        start += increment;
-        if (start >= target) {
-          start = target;
-          clearInterval(timer);
-        }
-        element.textContent = Math.floor(start).toLocaleString();
-      }, 30);
+<!-- بخش آمار دانلود -->
+<section class="stats">
+  <h2>آمار دانلود برنامه</h2>
+  <div class="stats-container">
+    <div class="stat-card">
+      <h3 id="downloadCount">0</h3>
+      <p>تعداد دانلود</p>
+    </div>
+    <div class="stat-card">
+      <h3>2</h3>
+      <p>کاربران فعال</p>
+    </div>
+    <div class="stat-card">
+      <h3>4.8/5</h3>
+      <p>امتیاز کاربران</p>
+    </div>
+  </div>
+</section>
+
+<!-- فوتر -->
+<div class="footer">
+  طراحی شده توسط تیم پیکس وان ©
+</div>
+
+<!-- اسکریپت‌ها -->
+<script>
+  function animateCount(id, target, duration) {
+    const element = document.getElementById(id);
+    let start = 0;
+    const increment = target / (duration / 30);
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= target) {
+        start = target;
+        clearInterval(timer);
+      }
+      element.textContent = Math.floor(start).toLocaleString();
+    }, 30);
+  }
+
+  // انیمیشن آمار دانلود
+  window.addEventListener('DOMContentLoaded', () => {
+    animateCount('downloadCount', 123456, 2000);
+  });
+
+  // تشخیص قطع اینترنت
+  const banner = document.getElementById("offline-banner");
+  function updateOnlineStatus() {
+    if (navigator.onLine) {
+      banner.style.display = "none";
+    } else {
+      banner.style.display = "block";
     }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      animateCount('downloadCount', 123456, 2000); // تغییر عدد به تعداد دانلود واقعی شما
-    });
-  </script>
+  }
+  window.addEventListener('online', updateOnlineStatus);
+  window.addEventListener('offline', updateOnlineStatus);
+  updateOnlineStatus();
+</script>
 
 </body>
 </html>
