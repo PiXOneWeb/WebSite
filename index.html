@@ -2,7 +2,7 @@
 <html lang="fa">
 <head>
   <meta charset="UTF-8" />
-  <title>PiXOne Update | پیکس وان آپدیت</title>
+  <title>آپدیت با آیکون چرخشی و آهنگ</title>
   <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" />
   <style>
     body, html {
@@ -55,11 +55,29 @@
 </head>
 <body>
 
+<button id="start-btn">شروع آپدیت</button>
+
 <div class="update-container" id="update-container">
   <div class="spinner"></div>
-  درحال آپدیت
+    درحال آپدیت
 </div>
 
+<audio id="audio" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
+  مرورگر شما از پخش صدا پشتیبانی نمی‌کند.
+</audio>
+
+<script>
+  const btn = document.getElementById('start-btn');
+  const audio = document.getElementById('audio');
+  const updateContainer = document.getElementById('update-container');
+
+  btn.addEventListener('click', () => {
+    audio.play();
+    btn.style.display = 'none';
+    updateContainer.style.display = 'flex';
+  });
+</script>
 
 </body>
 </html>
