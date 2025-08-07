@@ -2,253 +2,64 @@
 <html lang="fa">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PiXOne - ساخت برنامه رایگان و سریع</title>
-  <link rel="icon" href="logo.png" type="WhatsApp Image 2025-07-19 at 2.58.58 PM.jpeg" />
-  <meta name="google-site-verification" content="yg2ocdu5cJfoF0oywVJ55cwhccwJ6vIKeF6euzq2mWQ" />
-
+  <title>آپدیت با آیکون چرخشی و آهنگ</title>
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" />
   <style>
-    body {
+    body, html {
+      height: 100%;
       margin: 0;
       font-family: 'Vazir', sans-serif;
       direction: rtl;
-      background-color: #f5f8ff;
-      color: #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #f9f9f9;
     }
-
-    .hero {
-      position: relative;
-      background: url('photo-output (4).jpeg') no-repeat center center/cover;
-      height: 100vh;
+    .update-container {
       display: flex;
       align-items: center;
-      justify-content: center;
-      text-align: center;
+      gap: 12px;
+      font-size: 50px;
+      color: #2c3e50;
+      margin-bottom: 30px;
+      display: none; /* اول پیام مخفی باشه */
     }
-
-    .download-btn {
-      background-color: #007BFF;
-      color: white;
-      padding: 16px 30px;
-      font-size: 1.2rem;
-      border: none;
-      border-radius: 40px;
+    /* آیکون چرخشی */
+    .spinner {
+      border: 5px solid #ddd;
+      border-top: 5px solid #2980b9;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
+    button {
+      font-size: 50px;
+      padding: 10px 20px;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      transition: background-color 0.3s;
-    }
-
-    .download-btn:hover {
-      background-color: #0056b3;
-    }
-
-    .features {
-      padding: 60px 20px;
-      background-color: white;
-      text-align: center;
-    }
-
-    .features h2 {
-      font-size: 2rem;
-      margin-bottom: 40px;
-      color: #0056b3;
-    }
-
-    .feature-cards {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .card {
-      background-color: #f0f4ff;
-      border: 1px solid #d0e0ff;
-      border-radius: 16px;
-      padding: 20px;
-      width: 280px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card h3 {
-      color: #007BFF;
-      font-size: 1.4rem;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      font-size: 1rem;
-      color: #333;
-    }
-
-    .stats {
-      background: linear-gradient(to right, #0056b3, #007BFF);
+      border: none;
+      border-radius: 8px;
+      background-color: #2980b9;
       color: white;
-      padding: 60px 20px;
-      text-align: center;
+      transition: background-color 0.3s ease;
     }
-
-    .stats h2 {
-      font-size: 2.2rem;
-      margin-bottom: 40px;
-    }
-
-    .stats-container {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 30px;
-    }
-
-    .stat-card {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 16px;
-      padding: 30px 40px;
-      width: 220px;
-      box-shadow: 0 8px 15px rgba(0,0,0,0.15);
-      transition: transform 0.3s ease;
-    }
-
-    .stat-card:hover {
-      transform: scale(1.08);
-    }
-
-    .stat-card h3 {
-      color: #fff;
-      font-size: 2.8rem;
-      margin-bottom: 10px;
-    }
-
-    .stat-card p {
-      font-size: 1.2rem;
-      color: #e0e0e0;
-    }
-
-    .footer {
-      background-color: #002752;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      font-size: 1rem;
-    }
-
-    #offline-banner {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background-color: #e53935;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      font-size: 1rem;
-      z-index: 10000;
-    }
-
-    @media (max-width: 768px) {
-      .download-btn {
-        font-size: 1rem;
-        padding: 12px 20px;
-      }
-      .feature-cards, .stats-container {
-        flex-direction: column;
-        align-items: center;
-      }
+    button:hover {
+      background-color: #1c5980;
     }
   </style>
 </head>
 <body>
 
-<!-- بنر قطع اینترنت -->
-<div id="offline-banner">🚫 اتصال به اینترنت برقرار نیست</div>
-
-<!-- هدر -->
-<section class="hero">
-  <button class="download-btn" onclick="window.location.href='https://old.appsgeyser.com/building/?type=apk&widget_name=PiXOne_18955071'">
-    📥 دانلود برنامه
-  </button>
-</section>
-
-<!-- ویژگی‌ها -->
-<section class="features">
-  <h2>قابلیت‌های جذاب PiXOne</h2>
-  <div class="feature-cards">
-    <div class="card">
-      <h3>هوشمند</h3>
-      <p>مجهز به هوش مصنوعی پیشرفته برای تعامل بهتر</p>
-    </div>
-    <div class="card">
-      <h3>طراحی حرفه‌ای</h3>
-      <p>رابط کاربری زیبا و واکنش‌گرا در تمامی دستگاه‌ها</p>
-    </div>
-    <div class="card">
-      <h3>هشداردهی هوشمند</h3>
-      <p>با سیستم یادآور داخلی، هیچ چیزی رو از دست نمی‌دی</p>
-    </div>
-  </div>
-</section>
-
-<!-- آمار -->
-<section class="stats">
-  <h2>آمار فوق‌العاده ما</h2>
-  <div class="stats-container">
-    <div class="stat-card">
-      <h3 id="downloadCount">0</h3>
-      <p>دانلود تا امروز</p>
-    </div>
-    <div class="stat-card">
-      <h3>122</h3>
-      <p>کاربر فعال</p>
-    </div>
-    <div class="stat-card">
-      <h3>4.8</h3>
-      <p>امتیاز کاربران</p>
-    </div>
-  </div>
-</section>
-
-<!-- فوتر -->
-<div class="footer">
-  طراحی و توسعه توسط تیم <strong>PiXOne</strong> © 2025
+<div class="update-container" id="update-container">
+  <div class="spinner"></div>
+  درحال آپدیت
 </div>
 
-<!-- اسکریپت‌ها -->
-<script>
-  function animateCount(id, target, duration) {
-    const el = document.getElementById(id);
-    let start = 0;
-    const step = target / (duration / 30);
-    const timer = setInterval(() => {
-      start += step;
-      if (start >= target) {
-        start = target;
-        clearInterval(timer);
-      }
-      el.textContent = Math.floor(start).toLocaleString();
-    }, 30);
-  }
-
-  // شروع انیمیشن آمار
-  document.addEventListener("DOMContentLoaded", () => {
-    animateCount("downloadCount", 123456, 2000);
-  });
-
-  // آنلاین/آفلاین
-  const banner = document.getElementById("offline-banner");
-  function updateConnection() {
-    banner.style.display = navigator.onLine ? "none" : "block";
-  }
-  window.addEventListener("online", updateConnection);
-  window.addEventListener("offline", updateConnection);
-  updateConnection();
-</script>
 
 </body>
 </html>
